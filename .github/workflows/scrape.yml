@@ -101,6 +101,23 @@ jobs:
       - name: Archive monthly snapshot and rebuild manifest
         run: bash scripts/archive_month.sh
 
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Sync to Google Sheets
+        env:
+          GOOGLE_SERVICE_ACCOUNT_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+        run: |
+          if [ -z "$GOOGLE_SHEET_ID" ] || [ -z "$GOOGLE_SERVICE_ACCOUNT_KEY" ]; then
+            echo "GOOGLE_SHEET_ID / GOOGLE_SERVICE_ACCOUNT_KEY not set — skipping Sheets sync (see README2.md)."
+          else
+            npm install --no-save googleapis
+            node scripts/push_to_sheets.mjs
+          fi
+
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"

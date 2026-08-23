@@ -199,6 +199,45 @@ for a different set without touching code, pass `--certs-file` a JSON array of
 
 ---
 
+## Looker Studio dashboard
+
+Every scheduled run rolls all monthly snapshots into
+`site/history/global_timeseries.csv` and `site/history/indonesia_timeseries.csv`
+(one row per certification per scrape date — see `scripts/archive_month.sh`).
+The workflow can push those two files into a Google Sheet automatically, which
+Looker Studio then reads live. One-time setup, about 10 minutes:
+
+1. **Google Cloud project** — at [console.cloud.google.com](https://console.cloud.google.com),
+   create a project (or reuse one), then enable the **Google Sheets API**
+   (APIs & Services → Enable APIs and services → search "Google Sheets API").
+2. **Service account** — IAM & Admin → Service Accounts → Create service
+   account. Any name is fine; no roles/permissions needed at the project level.
+3. **JSON key** — open the new service account → Keys → Add key → Create new
+   key → JSON. This downloads a `.json` file — keep it private, it's a
+   credential.
+4. **Google Sheet** — create a new blank Google Sheet. Click Share, and share
+   it with the service account's email (the `client_email` field inside the
+   downloaded JSON, looks like `...@...iam.gserviceaccount.com`) as **Editor**.
+5. **Sheet ID** — copy it from the Sheet's URL:
+   `docs.google.com/spreadsheets/d/`**`THIS_PART`**`/edit`.
+6. **GitHub secrets** — in the repo, Settings → Secrets and variables →
+   Actions → New repository secret:
+   - `GOOGLE_SERVICE_ACCOUNT_KEY` — paste the entire contents of the JSON key file.
+   - `GOOGLE_SHEET_ID` — the Sheet ID from step 5.
+7. **Run it** — trigger the workflow (Actions tab → Run workflow). If the two
+   secrets are set, a "Sync to Google Sheets" step writes into `Global` and
+   `Indonesia` tabs on the Sheet, creating them if needed. Without the
+   secrets, that step logs a message and skips — nothing breaks.
+8. **Build the report** — at [lookerstudio.google.com](https://lookerstudio.google.com),
+   Create → Report → Add data → Google Sheets → select the Sheet → pick the
+   `Global` (or `Indonesia`) tab → Add. From there, a time series chart with
+   `Scraped On` on the x-axis and `Postings` on the y-axis, broken down by
+   `Certification`, gives a demand-over-time view. Looker Studio re-reads the
+   Sheet on its own refresh schedule, so the dashboard stays current after
+   every scheduled scrape with no manual step.
+
+---
+
 ## No-install (Docker path)
 
 Don't want to install Elixir at all? You only need Docker. The `Justfile`
