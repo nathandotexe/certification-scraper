@@ -31,6 +31,10 @@ on:
         description: "Comma-separated location match terms for the Indonesia cut"
         required: false
         default: "indonesia,jakarta,bali,surabaya,bandung,yogyakarta,denpasar,medan,semarang,makassar,malang"
+      indonesia_sources:
+        description: "Sources to scan for the Indonesia cut (wider than the global default since coverage is thin)"
+        required: false
+        default: "workday,greenhouse,lever,ashby"
 
 permissions:
   contents: write
@@ -52,6 +56,7 @@ jobs:
       TARGET: ${{ github.event.inputs.target || '12000' }}
       TOP: ${{ github.event.inputs.top || '12' }}
       INDONESIA_TERMS: ${{ github.event.inputs.indonesia_terms || 'indonesia,jakarta,bali,surabaya,bandung,yogyakarta,denpasar,medan,semarang,makassar,malang' }}
+      INDONESIA_SOURCES: ${{ github.event.inputs.indonesia_sources || 'workday,greenhouse,lever,ashby' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -87,7 +92,7 @@ jobs:
       - name: Run Indonesia-filtered scrape
         run: |
           mix run -e 'CertScout.CLI.main(System.argv())' -- \
-            --sources "$SOURCES" --target "$TARGET" --top "$TOP" \
+            --sources "$INDONESIA_SOURCES" --target "$TARGET" --top "$TOP" \
             --location "$INDONESIA_TERMS" --output output/indonesia
 
       - name: Sync README with latest global report
