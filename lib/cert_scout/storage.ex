@@ -18,22 +18,31 @@ defmodule CertScout.Storage do
     data_dir = Path.join(output_dir, "data")
     File.mkdir_p!(data_dir)
 
-    write_postings(data_dir, analysis.matched)
-    write_certifications(data_dir, analysis)
+    write_postings(data_dir, analysis, meta)
+    write_certifications(data_dir, analysis, meta)
     write_summary(data_dir, analysis, meta)
     :ok
   end
 
-  defp write_postings(dir, matched) do
-    rows = Enum.map(matched, &posting_map/1)
+  defp write_postings(dir, analysis, meta) do
+    cert_names = Map.new(analysis.results, &{&1.cert.slug, &1.cert.name})
+    rows = Enum.map(analysis.matched, &posting_map/1)
 
     File.write!(Path.join(dir, "postings.json"), JSON.encode!(rows))
 
     csv =
-      [["id", "source", "company", "title", "location", "url", "matched_certs"]]
+      [["Source", "Company", "Title", "Location", "URL", "Matched Certifications", "Scraped On"]]
       |> Stream.concat(
         Enum.map(rows, fn r ->
-          [r.id, r.source, r.company || "", r.title, r.location || "", r.url || "", Enum.join(r.matched_certs, ";")]
+          [
+            source_label(r.source),
+            r.company || "Unknown",
+            r.title,
+            r.location || "Not specified",
+            r.url || "",
+            r.matched_certs |> Enum.map(&Map.get(cert_names, &1, &1)) |> Enum.join(", "),
+            Date.to_iso8601(meta.generated_on)
+          ]
         end)
       )
       |> CSV.dump_to_iodata()
@@ -41,7 +50,7 @@ defmodule CertScout.Storage do
     File.write!(Path.join(dir, "postings.csv"), csv)
   end
 
-  defp write_certifications(dir, %{total: total, results: results}) do
+  defp write_certifications(dir, %{total: total, results: results}, meta) do
     ranked =
       results
       |> Enum.with_index(1)
@@ -59,16 +68,28 @@ defmodule CertScout.Storage do
     File.write!(Path.join(dir, "certifications.json"), JSON.encode!(%{total_cyber_postings: total, ranking: ranked}))
 
     csv =
-      [["rank", "certification", "issuer", "postings", "percent_of_cyber_postings"]]
+      [["Rank", "Certification", "Issuer", "Postings", "Percent of Cyber Postings", "Scraped On"]]
       |> Stream.concat(
         Enum.map(ranked, fn r ->
-          [r.rank, r.name, r.issuer || "", r.postings, r.percent]
+          [r.rank, r.name, r.issuer || "Unknown", r.postings, r.percent, Date.to_iso8601(meta.generated_on)]
         end)
       )
       |> CSV.dump_to_iodata()
 
     File.write!(Path.join(dir, "certifications.csv"), csv)
   end
+
+  @source_labels %{
+    "workday" => "Workday",
+    "greenhouse" => "Greenhouse",
+    "lever" => "Lever",
+    "ashby" => "Ashby",
+    "remoteok" => "RemoteOK",
+    "usajobs" => "USAJobs",
+    "adzuna" => "Adzuna"
+  }
+
+  defp source_label(source), do: Map.get(@source_labels, source, source)
 
   defp write_summary(dir, %{total: total, results: results}, meta) do
     summary =

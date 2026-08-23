@@ -46,3 +46,32 @@ done
 
 echo "]" >> "$tmp"
 mv "$tmp" site/months.json
+
+# Roll every month's certifications.csv into one tidy long-format file per
+# scope — one row per certification per month, "Scraped On" gives the date.
+# This is the file to feed into Google Sheets / Looker Studio: import once,
+# point a chart at it, and each future scheduled run appends a new date.
+rollup() {
+  scope="$1"
+  out="site/history/${scope}_timeseries.csv"
+  files=$(find site/history -mindepth 3 -maxdepth 3 -type f -path "*/$scope/certifications.csv" | sort)
+
+  if [ -z "$files" ]; then
+    return
+  fi
+
+  first=true
+  tmp_out=$(mktemp)
+  for f in $files; do
+    if $first; then
+      cp "$f" "$tmp_out"
+      first=false
+    else
+      tail -n +2 "$f" >> "$tmp_out"
+    fi
+  done
+  mv "$tmp_out" "$out"
+}
+
+rollup global
+rollup indonesia

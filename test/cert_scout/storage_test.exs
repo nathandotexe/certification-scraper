@@ -29,7 +29,7 @@ defmodule CertScout.StorageTest do
     try do
       assert Storage.write(dir, analysis, meta) == :ok
       csv = File.read!(Path.join([dir, "data", "postings.csv"]))
-      assert csv =~ "cissp"
+      assert csv =~ "CISSP"
     after
       File.rm_rf!(dir)
     end
