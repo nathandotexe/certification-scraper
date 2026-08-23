@@ -117,6 +117,7 @@ just test      # run the test suite
 --output DIR        Output directory (default output)
 --all               Analyze every posting, skip the cybersecurity filter
 --country CC        Country code for Adzuna (default us)
+--location "x,y"    Keep only postings whose location text contains one of these (case-insensitive)
 --boards-file F     Override Greenhouse board tokens (one per line)
 --workday-file F    Override Workday sites (lines: tenant,datacenter,site)
 --lever-file F      Override Lever companies (one per line)
@@ -168,6 +169,25 @@ export ADZUNA_APP_ID=...     ADZUNA_APP_KEY=...    # enables the adzuna source
 
 Big, hand-verified company lists ship in [`lists/`](lists/) — point a source at one
 with the matching `--*-file` flag (e.g. `--ashby-file lists/ashby_orgs.txt`).
+
+---
+
+## Regional filtering
+
+`--location "x,y"` keeps only postings whose raw location text contains one of the
+given terms (case-insensitive), applied after the cybersecurity filter and before
+the certification count. Useful for scoping the report to a country or city, e.g.:
+
+```sh
+./certscout --sources greenhouse,workday --location "indonesia,jakarta,bali,surabaya,bandung"
+```
+
+Coverage depends entirely on what the underlying postings say and how many of the
+scraped companies hire in that region — `workday`/`greenhouse`/`lever`/`ashby` scan
+a hand-curated company list (`lists/`), so a country with few matching employers
+will return a thin sample. `adzuna` does not currently operate in Indonesia (its
+`--country` list is au, at, br, ca, de, fr, gb, in, it, mx, nl, nz, pl, sg, us, za,
+ch, sp — no `id`), so it cannot be used to widen Indonesia coverage.
 
 ---
 

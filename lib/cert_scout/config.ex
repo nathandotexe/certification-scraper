@@ -25,6 +25,7 @@ defmodule CertScout.Config do
             per_source_cap: 6_000,
             include_all: false,
             country: "us",
+            location_filter: nil,
             output_dir: "output",
             user_agent:
               "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36 CertScout/0.1",

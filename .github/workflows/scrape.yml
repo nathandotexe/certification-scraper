@@ -2,8 +2,10 @@
 # .github/workflows/scrape.yml
 #
 # Runs CertScout on a schedule so the report stays fresh without anyone's
-# machine needing to be on. Commits the refreshed output/ + README.md back
-# to the repo when the scrape produces changes.
+# machine needing to be on. Produces two datasets each run — global and
+# Indonesia-filtered — commits the refreshed output/ + README.md back to the
+# repo, and archives a monthly CSV snapshot of each under site/history/ for
+# the download page served by Vercel.
 
 name: Scrape cybersecurity certification demand
 
@@ -25,6 +27,10 @@ on:
         description: "Number of certifications in the report"
         required: false
         default: "12"
+      indonesia_terms:
+        description: "Comma-separated location match terms for the Indonesia cut"
+        required: false
+        default: "indonesia,jakarta,bali,surabaya,bandung,yogyakarta,denpasar,medan,semarang,makassar,malang"
 
 permissions:
   contents: write
@@ -42,6 +48,10 @@ jobs:
       USAJOBS_EMAIL: ${{ secrets.USAJOBS_EMAIL }}
       ADZUNA_APP_ID: ${{ secrets.ADZUNA_APP_ID }}
       ADZUNA_APP_KEY: ${{ secrets.ADZUNA_APP_KEY }}
+      SOURCES: ${{ github.event.inputs.sources || 'workday,greenhouse' }}
+      TARGET: ${{ github.event.inputs.target || '12000' }}
+      TOP: ${{ github.event.inputs.top || '12' }}
+      INDONESIA_TERMS: ${{ github.event.inputs.indonesia_terms || 'indonesia,jakarta,bali,surabaya,bandung,yogyakarta,denpasar,medan,semarang,makassar,malang' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -69,21 +79,28 @@ jobs:
           mix deps.get
           mix compile
 
-      - name: Run scraper
+      - name: Run global scrape
         run: |
           mix run -e 'CertScout.CLI.main(System.argv())' -- \
-            --sources "${{ github.event.inputs.sources || 'workday,greenhouse' }}" \
-            --target "${{ github.event.inputs.target || '12000' }}" \
-            --top "${{ github.event.inputs.top || '12' }}"
+            --sources "$SOURCES" --target "$TARGET" --top "$TOP" --output output
 
-      - name: Sync README with latest report
+      - name: Run Indonesia-filtered scrape
+        run: |
+          mix run -e 'CertScout.CLI.main(System.argv())' -- \
+            --sources "$SOURCES" --target "$TARGET" --top "$TOP" \
+            --location "$INDONESIA_TERMS" --output output/indonesia
+
+      - name: Sync README with latest global report
         run: cp output/REPORT.md README.md
+
+      - name: Archive monthly snapshot and rebuild manifest
+        run: bash scripts/archive_month.sh
 
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add output README.md
+          git add output README.md site
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else

@@ -32,6 +32,7 @@ defmodule CertScout do
       postings
       |> Enum.uniq_by(&Posting.dedup_key/1)
       |> Enum.filter(&Cyber.keep?(&1.title, config))
+      |> filter_location(config.location_filter)
       |> cap(config.target)
 
     Log.info("Scanned #{scanned} postings | #{length(cyber)} cybersecurity roles | analyzing certifications")
@@ -58,6 +59,16 @@ defmodule CertScout do
   defp cap(postings, target) when is_integer(target) and target > 0, do: Enum.take(postings, target)
   defp cap(postings, _target), do: postings
 
+  defp filter_location(postings, nil), do: postings
+  defp filter_location(postings, terms), do: Enum.filter(postings, &location_match?(&1.location, terms))
+
+  defp location_match?(nil, _terms), do: false
+
+  defp location_match?(location, terms) do
+    downcased = String.downcase(location)
+    Enum.any?(terms, &String.contains?(downcased, &1))
+  end
+
   defp meta(scanned, cyber, config) do
     companies =
       cyber
@@ -72,6 +83,7 @@ defmodule CertScout do
       companies: companies,
       sources: Enum.map(config.sources, &to_string/1),
       search_terms: config.search_terms,
+      location_filter: config.location_filter,
       generated_on: Date.utc_today(),
       top_n: config.top_n
     }

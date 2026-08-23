@@ -26,6 +26,7 @@ defmodule CertScout.CLI do
     ashby_file: :string,
     certs_file: :string,
     country: :string,
+    location: :string,
     all: :boolean,
     help: :boolean
   ]
@@ -57,6 +58,7 @@ defmodule CertScout.CLI do
       output_dir: opts[:output],
       include_all: opts[:all],
       country: opts[:country],
+      location_filter: parse_location(opts[:location]),
       boards: read_lines(opts[:boards_file]),
       lever_companies: read_lines(opts[:lever_file]),
       ashby_orgs: read_lines(opts[:ashby_file]),
@@ -83,6 +85,9 @@ defmodule CertScout.CLI do
   rescue
     ArgumentError -> nil
   end
+
+  defp parse_location(nil), do: nil
+  defp parse_location(string), do: string |> parse_list() |> Enum.map(&String.downcase/1)
 
   defp parse_list(nil), do: nil
 
@@ -176,6 +181,7 @@ defmodule CertScout.CLI do
       --output DIR        Output directory (default output)
       --all               Analyze every posting, skip the cybersecurity filter
       --country CC        Country code for Adzuna (default us)
+      --location "x,y"    Keep only postings whose location text contains one of these (case-insensitive)
       --boards-file F     Override Greenhouse board tokens (one per line)
       --workday-file F    Override Workday sites (lines: tenant,datacenter,site)
       --lever-file F      Override Lever companies (one per line)

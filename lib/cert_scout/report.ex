@@ -36,9 +36,16 @@ defmodule CertScout.Report do
     From those, **#{number(total)}** were isolated as cybersecurity roles across #{number(meta.companies)} employers.
     Every number below is the real count of postings whose full text names the certification.
     Data sources: #{Enum.join(meta.sources, ", ")}.
-
+    #{location_note(meta[:location_filter])}
     ---
     """
+  end
+
+  defp location_note(nil), do: ""
+  defp location_note([]), do: ""
+
+  defp location_note(terms) do
+    "Filtered to postings whose location mentions: #{Enum.join(terms, ", ")}.\n"
   end
 
   defp table(top) do
