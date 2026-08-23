@@ -1,0 +1,10 @@
+.git
+_build
+deps
+output
+site
+.mix
+.hex
+certscout
+*.md
+.github

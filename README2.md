@@ -209,6 +209,25 @@ just demo                  # quick greenhouse-only run, fully containerized
 just run --sources greenhouse,workday
 ```
 
+That path mounts your source into the official `elixir` image and runs it with
+`mix` each time — no image to manage, but nothing is precompiled. For a real
+standalone image, build the `Dockerfile` instead: a multi-stage build that
+compiles the `certscout` escript in an `elixir:1.18-otp-27-alpine` build stage,
+then copies just the binary and `lists/` into a slim `erlang:27-alpine` runtime
+stage.
+
+```sh
+just docker-build                          # docker build -t certscout .
+just docker-run --sources greenhouse       # writes into ./output on the host
+```
+
+Or with plain Docker:
+
+```sh
+docker build -t certscout .
+docker run --rm -v "$PWD/output":/app/output certscout --sources greenhouse
+```
+
 ---
 
 ## Notes on conduct

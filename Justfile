@@ -59,3 +59,9 @@ logos:
 
 clean:
     rm -rf _build deps output .mix .hex certscout
+
+docker-build:
+    docker build -t certscout .
+
+docker-run *ARGS:
+    docker run --rm -v "$PWD/output":/app/output certscout {{ARGS}}
