@@ -1,6 +1,6 @@
 # Cybersecurity Certification Demand
 
-### 18,224 job postings scanned on 2026-08-23
+### 18,226 job postings scanned on 2026-08-23
 
 From those, **1,060** were isolated as cybersecurity roles across 79 employers.
 Every number below is the real count of postings whose full text names the certification.
@@ -12,14 +12,14 @@ Data sources: workday, greenhouse.
 
 | Rank | Certification | Issuer | Postings | Share |
 |-----:|---------------|--------|---------:|------:|
-| 1 | CISSP | ISC2 | 243 | 22.9% |
-| 2 | CompTIA Security+ | CompTIA | 148 | 14.0% |
-| 3 | CISM | ISACA | 101 | 9.5% |
+| 1 | CISSP | ISC2 | 241 | 22.7% |
+| 2 | CompTIA Security+ | CompTIA | 147 | 13.9% |
+| 3 | CISM | ISACA | 99 | 9.3% |
 | 4 | GIAC (other) | GIAC | 93 | 8.8% |
 | 5 | CompTIA CySA+ | CompTIA | 71 | 6.7% |
-| 6 | CCSP | ISC2 | 68 | 6.4% |
-| 7 | CEH | EC-Council | 68 | 6.4% |
-| 8 | CompTIA CASP+ / SecurityX | CompTIA | 59 | 5.6% |
+| 6 | CEH | EC-Council | 67 | 6.3% |
+| 7 | CCSP | ISC2 | 66 | 6.2% |
+| 8 | CompTIA CASP+ / SecurityX | CompTIA | 58 | 5.5% |
 | 9 | GIAC GSEC | GIAC | 57 | 5.4% |
 | 10 | OSCP | OffSec | 56 | 5.3% |
 | 11 | SSCP | ISC2 | 53 | 5.0% |
@@ -31,7 +31,7 @@ Data sources: workday, greenhouse.
 
 <img src="assets/cissp.png" alt="CISSP" height="84">
 
-**243** of 1,060 cybersecurity postings — **22.9%**
+**241** of 1,060 cybersecurity postings — **22.7%**
 
 `████████████████████████████████`
 
@@ -43,9 +43,9 @@ Issuer: ISC2
 
 <img src="assets/security-plus.png" alt="CompTIA Security+" height="84">
 
-**148** of 1,060 cybersecurity postings — **14.0%**
+**147** of 1,060 cybersecurity postings — **13.9%**
 
-`███████████████████░░░░░░░░░░░░░`
+`████████████████████░░░░░░░░░░░░`
 
 Issuer: CompTIA
 
@@ -55,7 +55,7 @@ Issuer: CompTIA
 
 <img src="assets/cism.png" alt="CISM" height="84">
 
-**101** of 1,060 cybersecurity postings — **9.5%**
+**99** of 1,060 cybersecurity postings — **9.3%**
 
 `█████████████░░░░░░░░░░░░░░░░░░░`
 
@@ -87,23 +87,11 @@ Issuer: CompTIA
 
 ---
 
-## 6. CCSP
-
-<img src="assets/ccsp.png" alt="CCSP" height="84">
-
-**68** of 1,060 cybersecurity postings — **6.4%**
-
-`█████████░░░░░░░░░░░░░░░░░░░░░░░`
-
-Issuer: ISC2
-
----
-
-## 7. CEH
+## 6. CEH
 
 <img src="assets/ceh.png" alt="CEH" height="84">
 
-**68** of 1,060 cybersecurity postings — **6.4%**
+**67** of 1,060 cybersecurity postings — **6.3%**
 
 `█████████░░░░░░░░░░░░░░░░░░░░░░░`
 
@@ -111,11 +99,23 @@ Issuer: EC-Council
 
 ---
 
+## 7. CCSP
+
+<img src="assets/ccsp.png" alt="CCSP" height="84">
+
+**66** of 1,060 cybersecurity postings — **6.2%**
+
+`█████████░░░░░░░░░░░░░░░░░░░░░░░`
+
+Issuer: ISC2
+
+---
+
 ## 8. CompTIA CASP+ / SecurityX
 
 <img src="assets/casp-plus.png" alt="CompTIA CASP+ / SecurityX" height="84">
 
-**59** of 1,060 cybersecurity postings — **5.6%**
+**58** of 1,060 cybersecurity postings — **5.5%**
 
 `████████░░░░░░░░░░░░░░░░░░░░░░░░`
 
