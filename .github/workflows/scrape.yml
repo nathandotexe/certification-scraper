@@ -1,0 +1,92 @@
+# © AngelaMos | 2026
+# .github/workflows/scrape.yml
+#
+# Runs CertScout on a schedule so the report stays fresh without anyone's
+# machine needing to be on. Commits the refreshed output/ + README.md back
+# to the repo when the scrape produces changes.
+
+name: Scrape cybersecurity certification demand
+
+on:
+  schedule:
+    # 06:00 UTC every Monday. Edit the cron expression to change cadence.
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+    inputs:
+      sources:
+        description: "Comma-separated sources (workday,greenhouse,lever,ashby,remoteok,usajobs,adzuna)"
+        required: false
+        default: "workday,greenhouse"
+      target:
+        description: "Cap on cybersecurity postings to analyze (or 'all')"
+        required: false
+        default: "12000"
+      top:
+        description: "Number of certifications in the report"
+        required: false
+        default: "12"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: certscout-scrape
+  cancel-in-progress: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      USAJOBS_API_KEY: ${{ secrets.USAJOBS_API_KEY }}
+      USAJOBS_EMAIL: ${{ secrets.USAJOBS_EMAIL }}
+      ADZUNA_APP_ID: ${{ secrets.ADZUNA_APP_ID }}
+      ADZUNA_APP_KEY: ${{ secrets.ADZUNA_APP_KEY }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Erlang/Elixir
+        uses: erlef/setup-beam@v1
+        with:
+          otp-version: "27"
+          elixir-version: "1.18"
+
+      - name: Cache deps and build
+        uses: actions/cache@v4
+        with:
+          path: |
+            deps
+            _build
+          key: ${{ runner.os }}-mix-${{ hashFiles('mix.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-mix-
+
+      - name: Install dependencies
+        run: |
+          mix local.hex --force
+          mix local.rebar --force
+          mix deps.get
+          mix compile
+
+      - name: Run scraper
+        run: |
+          mix run -e 'CertScout.CLI.main(System.argv())' -- \
+            --sources "${{ github.event.inputs.sources || 'workday,greenhouse' }}" \
+            --target "${{ github.event.inputs.target || '12000' }}" \
+            --top "${{ github.event.inputs.top || '12' }}"
+
+      - name: Sync README with latest report
+        run: cp output/REPORT.md README.md
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add output README.md
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore: scheduled scrape refresh ($(date -u +'%Y-%m-%d'))"
+            git push
+          fi
