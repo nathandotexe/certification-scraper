@@ -1,11 +1,15 @@
 // © AngelaMos | 2026
 // scripts/push_to_sheets.mjs
 //
-// Pushes site/history/{global,indonesia}_timeseries.csv into two tabs of a
-// Google Sheet, so a Looker Studio report built on that Sheet stays current
-// after every scheduled scrape. Requires GOOGLE_SERVICE_ACCOUNT_KEY (the
-// service account's JSON key, as a string) and GOOGLE_SHEET_ID env vars.
-// See README2.md "Looker Studio dashboard" for one-time setup.
+// Pushes certification-demand data into a Google Sheet so a Looker Studio
+// report built on that Sheet stays current after every scheduled scrape.
+// Global/Indonesia tabs get the full monthly time series (one row per
+// certification per scrape date); Postings/Indonesia Postings get the
+// current run's individual job postings with a clickable URL column, so
+// the underlying listings are one click away instead of just a count.
+// Requires GOOGLE_SERVICE_ACCOUNT_KEY (the service account's JSON key, as
+// a string) and GOOGLE_SHEET_ID env vars. See README2.md "Looker Studio
+// dashboard" for one-time setup.
 
 import { readFileSync } from "node:fs";
 import { google } from "googleapis";
@@ -62,6 +66,14 @@ function parseCsv(text) {
   return rows.filter((r) => r.length > 1 || r[0] !== "");
 }
 
+// Postings data comes from external job boards, not our own generated
+// catalog. With valueInputOption USER_ENTERED, a scraped title/company that
+// happens to start with =, +, -, or @ would be parsed as a formula — close
+// that off the same way spreadsheet apps guard against CSV injection.
+function sanitizeRows(rows) {
+  return rows.map((row) => row.map((cell) => (/^[=+\-@]/.test(cell) ? `'${cell}` : cell)));
+}
+
 const credentials = JSON.parse(keyJson);
 const auth = new google.auth.GoogleAuth({
   credentials,
@@ -82,7 +94,7 @@ async function ensureTab(tabName) {
 }
 
 async function pushTab(tabName, csvPath) {
-  const rows = parseCsv(readFileSync(csvPath, "utf8"));
+  const rows = sanitizeRows(parseCsv(readFileSync(csvPath, "utf8")));
   if (!rows.length) {
     console.log(`${csvPath} is empty, skipping ${tabName}`);
     return;
@@ -93,12 +105,24 @@ async function pushTab(tabName, csvPath) {
   await sheets.spreadsheets.values.update({
     spreadsheetId: sheetId,
     range: `${tabName}!A1`,
-    valueInputOption: "RAW",
+    // USER_ENTERED (not RAW) so Sheets parses "2026-08-23" as a real date
+    // and auto-links plain URL text in the Postings tabs' URL column.
+    valueInputOption: "USER_ENTERED",
     requestBody: { values: rows },
   });
 
   console.log(`Synced ${rows.length - 1} rows to tab "${tabName}"`);
 }
 
-await pushTab("Global", "site/history/global_timeseries.csv");
-await pushTab("Indonesia", "site/history/indonesia_timeseries.csv");
+async function tryPushTab(tabName, csvPath) {
+  try {
+    await pushTab(tabName, csvPath);
+  } catch (err) {
+    console.log(`Skipping "${tabName}" (${csvPath}): ${err.message}`);
+  }
+}
+
+await tryPushTab("Global", "site/history/global_timeseries.csv");
+await tryPushTab("Indonesia", "site/history/indonesia_timeseries.csv");
+await tryPushTab("Postings", "output/data/postings.csv");
+await tryPushTab("Indonesia Postings", "output/indonesia/data/postings.csv");

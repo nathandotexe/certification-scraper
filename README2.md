@@ -203,9 +203,11 @@ for a different set without touching code, pass `--certs-file` a JSON array of
 
 Every scheduled run rolls all monthly snapshots into
 `site/history/global_timeseries.csv` and `site/history/indonesia_timeseries.csv`
-(one row per certification per scrape date — see `scripts/archive_month.sh`).
-The workflow can push those two files into a Google Sheet automatically, which
-Looker Studio then reads live. One-time setup, about 10 minutes:
+(one row per certification per scrape date — see `scripts/archive_month.sh`),
+and the current run's individual job postings live in `output/data/postings.csv`
+/ `output/indonesia/data/postings.csv`, URL column included. The workflow can
+push all four into a Google Sheet automatically, which Looker Studio then
+reads live. One-time setup, about 10 minutes:
 
 1. **Google Cloud project** — at [console.cloud.google.com](https://console.cloud.google.com),
    create a project (or reuse one), then enable the **Google Sheets API**
@@ -225,8 +227,10 @@ Looker Studio then reads live. One-time setup, about 10 minutes:
    - `GOOGLE_SERVICE_ACCOUNT_KEY` — paste the entire contents of the JSON key file.
    - `GOOGLE_SHEET_ID` — the Sheet ID from step 5.
 7. **Run it** — trigger the workflow (Actions tab → Run workflow). If the two
-   secrets are set, a "Sync to Google Sheets" step writes into `Global` and
-   `Indonesia` tabs on the Sheet, creating them if needed. Without the
+   secrets are set, a "Sync to Google Sheets" step writes into four tabs —
+   `Global`, `Indonesia` (the monthly time series), `Postings`, and
+   `Indonesia Postings` (the current run's individual listings, with a
+   clickable `URL` column) — creating any that don't exist yet. Without the
    secrets, that step logs a message and skips — nothing breaks.
 8. **Build the report** — at [lookerstudio.google.com](https://lookerstudio.google.com),
    Create → Report → Add data → Google Sheets → select the Sheet → pick the
@@ -235,6 +239,20 @@ Looker Studio then reads live. One-time setup, about 10 minutes:
    `Certification`, gives a demand-over-time view. Looker Studio re-reads the
    Sheet on its own refresh schedule, so the dashboard stays current after
    every scheduled scrape with no manual step.
+9. **Clickable postings table** — add a second data source pointing at the
+   `Postings` tab (Resource → Manage added data sources → Add a data source
+   → Google Sheets → same spreadsheet → `Postings` tab). Build a **Table**
+   chart against it with dimensions `Title`, `Company`, `URL` (and `Matched
+   Certifications` if useful) — Sheets auto-links plain URLs, so the `URL`
+   column renders as a clickable link straight through to the listing. Since
+   this tab holds only the current run's postings (not a growing history),
+   it stays a manageable size and always reflects what's open right now.
+   Repeat with `Indonesia Postings` for the regional cut.
+
+**Note on trust:** `Postings`/`Indonesia Postings` contain text scraped from
+third-party job boards. The sync script neutralizes any cell that could be
+misread as a spreadsheet formula (leading `=`, `+`, `-`, or `@`), but treat
+the `URL` column like any other link from the open web before clicking it.
 
 ---
 
