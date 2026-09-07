@@ -1,8 +1,8 @@
 # Cybersecurity Certification Demand
 
-### 17,675 job postings scanned on 2026-08-31
+### 16,781 job postings scanned on 2026-09-07
 
-From those, **4** were isolated as cybersecurity roles across 1 employers.
+From those, **0** were isolated as cybersecurity roles across 0 employers.
 Every number below is the real count of postings whose full text names the certification.
 Data sources: workday, greenhouse, lever, ashby.
 Filtered to postings whose location mentions: indonesia, jakarta, bali, surabaya, bandung, yogyakarta, denpasar, medan, semarang, makassar, malang.
@@ -13,110 +13,26 @@ Filtered to postings whose location mentions: indonesia, jakarta, bali, surabaya
 
 | Rank | Certification | Issuer | Postings | Share |
 |-----:|---------------|--------|---------:|------:|
-| 1 | CCSP | ISC2 | 3 | 75.0% |
-| 2 | CISA | ISACA | 3 | 75.0% |
-| 3 | CISSP | ISC2 | 3 | 75.0% |
-| 4 | GIAC (other) | GIAC | 3 | 75.0% |
-| 5 | CEH | EC-Council | 2 | 50.0% |
-| 6 | CISM | ISACA | 1 | 25.0% |
-| 7 | OSCP | OffSec | 1 | 25.0% |
-| 8 | AWS Certified Security | AWS | 0 | 0.0% |
-| 9 | Azure Security Engineer (AZ-500) | Microsoft | 0 | 0.0% |
-| 10 | CCNA | Cisco | 0 | 0.0% |
-| 11 | CCSK | Cloud Security Alliance | 0 | 0.0% |
-| 12 | CRISC | ISACA | 0 | 0.0% |
+| 1 | AWS Certified Security | AWS | 0 | 0.0% |
+| 2 | Azure Security Engineer (AZ-500) | Microsoft | 0 | 0.0% |
+| 3 | CCNA | Cisco | 0 | 0.0% |
+| 4 | CCSK | Cloud Security Alliance | 0 | 0.0% |
+| 5 | CCSP | ISC2 | 0 | 0.0% |
+| 6 | CEH | EC-Council | 0 | 0.0% |
+| 7 | CISA | ISACA | 0 | 0.0% |
+| 8 | CISM | ISACA | 0 | 0.0% |
+| 9 | CISSP | ISC2 | 0 | 0.0% |
+| 10 | CRISC | ISACA | 0 | 0.0% |
+| 11 | Cisco CyberOps Associate | Cisco | 0 | 0.0% |
+| 12 | CompTIA A+ | CompTIA | 0 | 0.0% |
 
 ---
 
-## 1. CCSP
-
-<img src="assets/ccsp.png" alt="CCSP" height="84">
-
-**3** of 4 cybersecurity postings — **75.0%**
-
-`████████████████████████████████`
-
-Issuer: ISC2
-
----
-
-## 2. CISA
-
-<img src="assets/cisa.png" alt="CISA" height="84">
-
-**3** of 4 cybersecurity postings — **75.0%**
-
-`████████████████████████████████`
-
-Issuer: ISACA
-
----
-
-## 3. CISSP
-
-<img src="assets/cissp.png" alt="CISSP" height="84">
-
-**3** of 4 cybersecurity postings — **75.0%**
-
-`████████████████████████████████`
-
-Issuer: ISC2
-
----
-
-## 4. GIAC (other)
-
-<img src="assets/giac.svg" alt="GIAC (other)" height="84">
-
-**3** of 4 cybersecurity postings — **75.0%**
-
-`████████████████████████████████`
-
-Issuer: GIAC
-
----
-
-## 5. CEH
-
-<img src="assets/ceh.png" alt="CEH" height="84">
-
-**2** of 4 cybersecurity postings — **50.0%**
-
-`█████████████████████░░░░░░░░░░░`
-
-Issuer: EC-Council
-
----
-
-## 6. CISM
-
-<img src="assets/cism.png" alt="CISM" height="84">
-
-**1** of 4 cybersecurity postings — **25.0%**
-
-`███████████░░░░░░░░░░░░░░░░░░░░░`
-
-Issuer: ISACA
-
----
-
-## 7. OSCP
-
-<img src="assets/oscp.svg" alt="OSCP" height="84">
-
-**1** of 4 cybersecurity postings — **25.0%**
-
-`███████████░░░░░░░░░░░░░░░░░░░░░`
-
-Issuer: OffSec
-
----
-
-## 8. AWS Certified Security
+## 1. AWS Certified Security
 
 <img src="assets/aws-security.png" alt="AWS Certified Security" height="84">
 
-**0** of 4 cybersecurity postings — **0.0%**
+**0** of 0 cybersecurity postings — **0.0%**
 
 `░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░`
 
@@ -124,11 +40,11 @@ Issuer: AWS
 
 ---
 
-## 9. Azure Security Engineer (AZ-500)
+## 2. Azure Security Engineer (AZ-500)
 
 <img src="assets/az-500.png" alt="Azure Security Engineer (AZ-500)" height="84">
 
-**0** of 4 cybersecurity postings — **0.0%**
+**0** of 0 cybersecurity postings — **0.0%**
 
 `░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░`
 
@@ -136,11 +52,11 @@ Issuer: Microsoft
 
 ---
 
-## 10. CCNA
+## 3. CCNA
 
 <img src="assets/ccna.png" alt="CCNA" height="84">
 
-**0** of 4 cybersecurity postings — **0.0%**
+**0** of 0 cybersecurity postings — **0.0%**
 
 `░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░`
 
@@ -148,11 +64,11 @@ Issuer: Cisco
 
 ---
 
-## 11. CCSK
+## 4. CCSK
 
 <img src="assets/ccsk.svg" alt="CCSK" height="84">
 
-**0** of 4 cybersecurity postings — **0.0%**
+**0** of 0 cybersecurity postings — **0.0%**
 
 `░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░`
 
@@ -160,15 +76,99 @@ Issuer: Cloud Security Alliance
 
 ---
 
-## 12. CRISC
+## 5. CCSP
 
-<img src="assets/crisc.png" alt="CRISC" height="84">
+<img src="assets/ccsp.png" alt="CCSP" height="84">
 
-**0** of 4 cybersecurity postings — **0.0%**
+**0** of 0 cybersecurity postings — **0.0%**
+
+`░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░`
+
+Issuer: ISC2
+
+---
+
+## 6. CEH
+
+<img src="assets/ceh.png" alt="CEH" height="84">
+
+**0** of 0 cybersecurity postings — **0.0%**
+
+`░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░`
+
+Issuer: EC-Council
+
+---
+
+## 7. CISA
+
+<img src="assets/cisa.png" alt="CISA" height="84">
+
+**0** of 0 cybersecurity postings — **0.0%**
 
 `░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░`
 
 Issuer: ISACA
+
+---
+
+## 8. CISM
+
+<img src="assets/cism.png" alt="CISM" height="84">
+
+**0** of 0 cybersecurity postings — **0.0%**
+
+`░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░`
+
+Issuer: ISACA
+
+---
+
+## 9. CISSP
+
+<img src="assets/cissp.png" alt="CISSP" height="84">
+
+**0** of 0 cybersecurity postings — **0.0%**
+
+`░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░`
+
+Issuer: ISC2
+
+---
+
+## 10. CRISC
+
+<img src="assets/crisc.png" alt="CRISC" height="84">
+
+**0** of 0 cybersecurity postings — **0.0%**
+
+`░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░`
+
+Issuer: ISACA
+
+---
+
+## 11. Cisco CyberOps Associate
+
+<img src="assets/cbrops.png" alt="Cisco CyberOps Associate" height="84">
+
+**0** of 0 cybersecurity postings — **0.0%**
+
+`░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░`
+
+Issuer: Cisco
+
+---
+
+## 12. CompTIA A+
+
+<img src="assets/comptia-a-plus.png" alt="CompTIA A+" height="84">
+
+**0** of 0 cybersecurity postings — **0.0%**
+
+`░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░`
+
+Issuer: CompTIA
 
 ---
 
