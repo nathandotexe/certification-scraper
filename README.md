@@ -1,8 +1,8 @@
 # Cybersecurity Certification Demand
 
-### 17,233 job postings scanned on 2026-09-28
+### 17,219 job postings scanned on 2026-10-05
 
-From those, **891** were isolated as cybersecurity roles across 72 employers.
+From those, **903** were isolated as cybersecurity roles across 71 employers.
 Every number below is the real count of postings whose full text names the certification.
 Data sources: workday, greenhouse.
 
@@ -12,18 +12,18 @@ Data sources: workday, greenhouse.
 
 | Rank | Certification | Issuer | Postings | Share |
 |-----:|---------------|--------|---------:|------:|
-| 1 | CISSP | ISC2 | 196 | 22.0% |
-| 2 | CompTIA Security+ | CompTIA | 105 | 11.8% |
-| 3 | GIAC (other) | GIAC | 92 | 10.3% |
-| 4 | CISM | ISACA | 82 | 9.2% |
-| 5 | CEH | EC-Council | 65 | 7.3% |
-| 6 | CISA | ISACA | 59 | 6.6% |
-| 7 | GIAC GCIH | GIAC | 55 | 6.2% |
-| 8 | CompTIA CySA+ | CompTIA | 54 | 6.1% |
-| 9 | OSCP | OffSec | 47 | 5.3% |
-| 10 | CCSP | ISC2 | 39 | 4.4% |
-| 11 | CompTIA CASP+ / SecurityX | CompTIA | 38 | 4.3% |
-| 12 | GIAC GCIA | GIAC | 32 | 3.6% |
+| 1 | CISSP | ISC2 | 184 | 20.4% |
+| 2 | CompTIA Security+ | CompTIA | 102 | 11.3% |
+| 3 | GIAC (other) | GIAC | 91 | 10.1% |
+| 4 | CISM | ISACA | 78 | 8.6% |
+| 5 | OSCP | OffSec | 63 | 7.0% |
+| 6 | CISA | ISACA | 54 | 6.0% |
+| 7 | CEH | EC-Council | 52 | 5.8% |
+| 8 | CompTIA CySA+ | CompTIA | 52 | 5.8% |
+| 9 | GIAC GCIH | GIAC | 45 | 5.0% |
+| 10 | CCSP | ISC2 | 44 | 4.9% |
+| 11 | GIAC GSEC | GIAC | 38 | 4.2% |
+| 12 | CompTIA CASP+ / SecurityX | CompTIA | 36 | 4.0% |
 
 ---
 
@@ -31,7 +31,7 @@ Data sources: workday, greenhouse.
 
 <img src="assets/cissp.png" alt="CISSP" height="84">
 
-**196** of 891 cybersecurity postings — **22.0%**
+**184** of 903 cybersecurity postings — **20.4%**
 
 `████████████████████████████████`
 
@@ -43,9 +43,9 @@ Issuer: ISC2
 
 <img src="assets/security-plus.png" alt="CompTIA Security+" height="84">
 
-**105** of 891 cybersecurity postings — **11.8%**
+**102** of 903 cybersecurity postings — **11.3%**
 
-`█████████████████░░░░░░░░░░░░░░░`
+`██████████████████░░░░░░░░░░░░░░`
 
 Issuer: CompTIA
 
@@ -55,9 +55,9 @@ Issuer: CompTIA
 
 <img src="assets/giac.svg" alt="GIAC (other)" height="84">
 
-**92** of 891 cybersecurity postings — **10.3%**
+**91** of 903 cybersecurity postings — **10.1%**
 
-`███████████████░░░░░░░░░░░░░░░░░`
+`████████████████░░░░░░░░░░░░░░░░`
 
 Issuer: GIAC
 
@@ -67,23 +67,23 @@ Issuer: GIAC
 
 <img src="assets/cism.png" alt="CISM" height="84">
 
-**82** of 891 cybersecurity postings — **9.2%**
+**78** of 903 cybersecurity postings — **8.6%**
 
-`█████████████░░░░░░░░░░░░░░░░░░░`
+`██████████████░░░░░░░░░░░░░░░░░░`
 
 Issuer: ISACA
 
 ---
 
-## 5. CEH
+## 5. OSCP
 
-<img src="assets/ceh.png" alt="CEH" height="84">
+<img src="assets/oscp.svg" alt="OSCP" height="84">
 
-**65** of 891 cybersecurity postings — **7.3%**
+**63** of 903 cybersecurity postings — **7.0%**
 
 `███████████░░░░░░░░░░░░░░░░░░░░░`
 
-Issuer: EC-Council
+Issuer: OffSec
 
 ---
 
@@ -91,23 +91,23 @@ Issuer: EC-Council
 
 <img src="assets/cisa.png" alt="CISA" height="84">
 
-**59** of 891 cybersecurity postings — **6.6%**
+**54** of 903 cybersecurity postings — **6.0%**
 
-`██████████░░░░░░░░░░░░░░░░░░░░░░`
+`█████████░░░░░░░░░░░░░░░░░░░░░░░`
 
 Issuer: ISACA
 
 ---
 
-## 7. GIAC GCIH
+## 7. CEH
 
-<img src="assets/gcih.svg" alt="GIAC GCIH" height="84">
+<img src="assets/ceh.png" alt="CEH" height="84">
 
-**55** of 891 cybersecurity postings — **6.2%**
+**52** of 903 cybersecurity postings — **5.8%**
 
 `█████████░░░░░░░░░░░░░░░░░░░░░░░`
 
-Issuer: GIAC
+Issuer: EC-Council
 
 ---
 
@@ -115,7 +115,7 @@ Issuer: GIAC
 
 <img src="assets/cysa-plus.png" alt="CompTIA CySA+" height="84">
 
-**54** of 891 cybersecurity postings — **6.1%**
+**52** of 903 cybersecurity postings — **5.8%**
 
 `█████████░░░░░░░░░░░░░░░░░░░░░░░`
 
@@ -123,15 +123,15 @@ Issuer: CompTIA
 
 ---
 
-## 9. OSCP
+## 9. GIAC GCIH
 
-<img src="assets/oscp.svg" alt="OSCP" height="84">
+<img src="assets/gcih.svg" alt="GIAC GCIH" height="84">
 
-**47** of 891 cybersecurity postings — **5.3%**
+**45** of 903 cybersecurity postings — **5.0%**
 
 `████████░░░░░░░░░░░░░░░░░░░░░░░░`
 
-Issuer: OffSec
+Issuer: GIAC
 
 ---
 
@@ -139,35 +139,35 @@ Issuer: OffSec
 
 <img src="assets/ccsp.png" alt="CCSP" height="84">
 
-**39** of 891 cybersecurity postings — **4.4%**
+**44** of 903 cybersecurity postings — **4.9%**
 
-`██████░░░░░░░░░░░░░░░░░░░░░░░░░░`
+`████████░░░░░░░░░░░░░░░░░░░░░░░░`
 
 Issuer: ISC2
 
 ---
 
-## 11. CompTIA CASP+ / SecurityX
+## 11. GIAC GSEC
+
+<img src="assets/gsec.svg" alt="GIAC GSEC" height="84">
+
+**38** of 903 cybersecurity postings — **4.2%**
+
+`███████░░░░░░░░░░░░░░░░░░░░░░░░░`
+
+Issuer: GIAC
+
+---
+
+## 12. CompTIA CASP+ / SecurityX
 
 <img src="assets/casp-plus.png" alt="CompTIA CASP+ / SecurityX" height="84">
 
-**38** of 891 cybersecurity postings — **4.3%**
+**36** of 903 cybersecurity postings — **4.0%**
 
 `██████░░░░░░░░░░░░░░░░░░░░░░░░░░`
 
 Issuer: CompTIA
-
----
-
-## 12. GIAC GCIA
-
-<img src="assets/gcia.svg" alt="GIAC GCIA" height="84">
-
-**32** of 891 cybersecurity postings — **3.6%**
-
-`█████░░░░░░░░░░░░░░░░░░░░░░░░░░░`
-
-Issuer: GIAC
 
 ---
 
