@@ -1,36 +1,36 @@
 Rank,Certification,Issuer,Postings,Percent of Cyber Postings,Scraped On
-1,CISSP,ISC2,231,21.6,2026-11-02
-2,CompTIA Security+,CompTIA,136,12.7,2026-11-02
-3,GIAC (other),GIAC,110,10.3,2026-11-02
-4,CISM,ISACA,92,8.6,2026-11-02
-5,CompTIA CySA+,CompTIA,71,6.6,2026-11-02
-6,OSCP,OffSec,66,6.2,2026-11-02
-7,GIAC GCIH,GIAC,62,5.8,2026-11-02
-8,CISA,ISACA,60,5.6,2026-11-02
-9,CCSP,ISC2,57,5.3,2026-11-02
-10,CEH,EC-Council,57,5.3,2026-11-02
-11,GIAC GSEC,GIAC,47,4.4,2026-11-02
-12,SSCP,ISC2,46,4.3,2026-11-02
-13,CCNA,Cisco,45,4.2,2026-11-02
-14,CompTIA CASP+ / SecurityX,CompTIA,44,4.1,2026-11-02
-15,GIAC GCIA,GIAC,27,2.5,2026-11-02
-16,GIAC GPEN,GIAC,25,2.3,2026-11-02
-17,AWS Certified Security,AWS,21,2.0,2026-11-02
-18,CRISC,ISACA,21,2.0,2026-11-02
-19,PMP,PMI,17,1.6,2026-11-02
-20,Azure Security Engineer (AZ-500),Microsoft,16,1.5,2026-11-02
-21,Microsoft SC-300 (Identity & Access Administrator),Microsoft,16,1.5,2026-11-02
-22,CompTIA Network+,CompTIA,15,1.4,2026-11-02
-23,GIAC GREM,GIAC,15,1.4,2026-11-02
-24,Microsoft SC-100 (Cybersecurity Architect),Microsoft,15,1.4,2026-11-02
-25,Microsoft SC-200 (Security Operations Analyst),Microsoft,15,1.4,2026-11-02
-26,OSEP,OffSec,14,1.3,2026-11-02
-27,CCSK,Cloud Security Alliance,13,1.2,2026-11-02
-28,OSWE,OffSec,12,1.1,2026-11-02
-29,Google Professional Cloud Security Engineer,Google,5,0.5,2026-11-02
-30,CompTIA PenTest+,CompTIA,4,0.4,2026-11-02
-31,Splunk Certified,Splunk,3,0.3,2026-11-02
-32,CompTIA A+,CompTIA,2,0.2,2026-11-02
-33,Palo Alto PCNSE,Palo Alto Networks,2,0.2,2026-11-02
-34,Cisco CyberOps Associate,Cisco,1,0.1,2026-11-02
-35,Fortinet NSE / FCSS,Fortinet,1,0.1,2026-11-02
+1,CISSP,ISC2,224,20.5,2026-11-09
+2,CompTIA Security+,CompTIA,143,13.1,2026-11-09
+3,GIAC (other),GIAC,110,10.1,2026-11-09
+4,CISM,ISACA,94,8.6,2026-11-09
+5,CISA,ISACA,68,6.2,2026-11-09
+6,CompTIA CySA+,CompTIA,68,6.2,2026-11-09
+7,OSCP,OffSec,65,5.9,2026-11-09
+8,CEH,EC-Council,63,5.8,2026-11-09
+9,GIAC GCIH,GIAC,63,5.8,2026-11-09
+10,CCSP,ISC2,58,5.3,2026-11-09
+11,CompTIA CASP+ / SecurityX,CompTIA,43,3.9,2026-11-09
+12,GIAC GSEC,GIAC,39,3.6,2026-11-09
+13,SSCP,ISC2,39,3.6,2026-11-09
+14,CCNA,Cisco,30,2.7,2026-11-09
+15,GIAC GCIA,GIAC,30,2.7,2026-11-09
+16,GIAC GPEN,GIAC,24,2.2,2026-11-09
+17,CRISC,ISACA,21,1.9,2026-11-09
+18,AWS Certified Security,AWS,20,1.8,2026-11-09
+19,CompTIA Network+,CompTIA,18,1.6,2026-11-09
+20,PMP,PMI,18,1.6,2026-11-09
+21,Azure Security Engineer (AZ-500),Microsoft,17,1.6,2026-11-09
+22,CCSK,Cloud Security Alliance,14,1.3,2026-11-09
+23,GIAC GREM,GIAC,14,1.3,2026-11-09
+24,Microsoft SC-200 (Security Operations Analyst),Microsoft,14,1.3,2026-11-09
+25,OSWE,OffSec,14,1.3,2026-11-09
+26,Microsoft SC-100 (Cybersecurity Architect),Microsoft,13,1.2,2026-11-09
+27,Microsoft SC-300 (Identity & Access Administrator),Microsoft,13,1.2,2026-11-09
+28,OSEP,OffSec,13,1.2,2026-11-09
+29,Google Professional Cloud Security Engineer,Google,6,0.5,2026-11-09
+30,CompTIA PenTest+,CompTIA,5,0.5,2026-11-09
+31,Splunk Certified,Splunk,3,0.3,2026-11-09
+32,CompTIA A+,CompTIA,2,0.2,2026-11-09
+33,Palo Alto PCNSE,Palo Alto Networks,2,0.2,2026-11-09
+34,Cisco CyberOps Associate,Cisco,1,0.1,2026-11-09
+35,Fortinet NSE / FCSS,Fortinet,1,0.1,2026-11-09
