@@ -1,6 +1,6 @@
 # Cybersecurity Certification Demand
 
-### 18,369 job postings scanned on 2026-11-09
+### 16,036 job postings scanned on 2026-11-16
 
 From those, **5** were isolated as cybersecurity roles across 1 employers.
 Every number below is the real count of postings whose full text names the certification.
